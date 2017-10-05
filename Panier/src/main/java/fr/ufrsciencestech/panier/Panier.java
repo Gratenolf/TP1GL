@@ -11,20 +11,24 @@ public class Panier {
     
     public Panier(int cont) throws OrangeException{
         try{
+            System.out.println("try");
             if(cont>0){
+                System.out.println("if");
                 this.contenance = cont;
                 listProd = new ArrayList();
             }
-            else
+            else{
                 System.out.println("erreur Contenance");
-            throw new OrangeException("Panier non valide");
+                throw new OrangeException("Panier non valide");
+            }
         }
-        catch(OrangeException e){
+        catch(NumberFormatException e){
             throw new OrangeException("Panier non valide");
         }
     }
 
     public int getContenance() {
+        System.out.println(""+this.contenance);
         return contenance;
     }
     

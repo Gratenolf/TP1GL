@@ -46,6 +46,7 @@ public class PanierTest {
         Panier instance = new Panier(2);
         int expResult = 2;
         int result = instance.getContenance();
+        System.out.println("contenance"+result);
         assertEquals(expResult, result);
     }
 
@@ -53,21 +54,21 @@ public class PanierTest {
      * Test of estPlein method, of class Panier.
      */
     @Test
-    public void testEstPlein() {
+    public void testEstPlein() throws OrangeException {
         System.out.println("estPlein");
-        Panier instance = null;
-        boolean expResult = false;
+        Panier instance = new Panier(2);
+        instance.ajoutOrange(new Orange(0.05,"ouzbekistan"));
+        instance.ajoutOrange(new Orange(0.2,"Slovaquie"));
+        boolean expResult = true;
         boolean result = instance.estPlein();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test la possible surcharge de panier
      * @throws OrangeException 
      */
-    @Test
+    /*@Test
     public void testAjoutPanierPlein() throws OrangeException{
         int n=4;
         Panier p = new Panier(n);
@@ -77,7 +78,7 @@ public class PanierTest {
         p.ajoutOrange(new Orange(0.50,"Suede"));
         p.ajoutOrange(new Orange(0.10,"Alaska"));
         assertEquals(n,p.getListProd().size(),0.0);
-    }
+    }*/
     
     /**
      * Test of estVide method, of class Panier.
@@ -89,21 +90,18 @@ public class PanierTest {
         boolean expResult = true;
         boolean result = instance.estVide();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
      * Test of toString method, of class Panier.
      */
     @Test
-    public void testToString() {
+    public void testToString() throws OrangeException {
         System.out.println("toString");
-        Panier instance = null;
-        String expResult = "";
+        Panier instance = new Panier(12);
+        String expResult = "contenance du Panier:";
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
