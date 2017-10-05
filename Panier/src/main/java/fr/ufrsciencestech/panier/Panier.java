@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.ufrsciencestech.panier;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,31 +6,34 @@ import java.util.Iterator;
  * @author ah154489
  */
 public class Panier {
-    private int Contenance;
+    private int contenance;
     private ArrayList listProd;
     
-    public Panier(int cont){
-        this.setContenance(cont);
-        listProd = new ArrayList();
+    public Panier(int cont) throws OrangeException{
+        try{
+            if(cont>0){
+                this.contenance = cont;
+                listProd = new ArrayList();
+            }
+            else
+                System.out.println("erreur Contenance");
+            throw new OrangeException("Panier non valide");
+        }
+        catch(OrangeException e){
+            throw new OrangeException("Panier non valide");
+        }
     }
 
     public int getContenance() {
-        return Contenance;
+        return contenance;
     }
-
-    /**
-     * pas utile mais fait quand meme
-     * @param Contenance 
-     */
-    public void setContenance(int Contenance) {
-        if(Contenance>0)
-            this.Contenance = Contenance;
-        else
-            System.out.println("erreur Contenance");
+    
+    public ArrayList getListProd() {
+        return listProd;
     }
     
     public boolean estPlein(){
-        if(listProd.size()==Contenance)
+        if(listProd.size()==contenance)
             return true;
         return false;
     }

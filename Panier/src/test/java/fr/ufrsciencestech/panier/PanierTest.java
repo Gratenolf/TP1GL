@@ -41,27 +41,12 @@ public class PanierTest {
      * Test of getContenance method, of class Panier.
      */
     @Test
-    public void testGetContenance() {
+    public void testGetContenance() throws OrangeException {
         System.out.println("getContenance");
-        Panier instance = null;
-        int expResult = 0;
+        Panier instance = new Panier(2);
+        int expResult = 2;
         int result = instance.getContenance();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setContenance method, of class Panier.
-     */
-    @Test
-    public void testSetContenance() {
-        System.out.println("setContenance");
-        int Contenance = 0;
-        Panier instance = null;
-        instance.setContenance(Contenance);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -78,22 +63,27 @@ public class PanierTest {
         fail("The test case is a prototype.");
     }
 
-    
+    /**
+     * Test la possible surcharge de panier
+     * @throws OrangeException 
+     */
+    @Test
     public void testAjoutPanierPlein() throws OrangeException{
-        Panier p = new Panier(4);
+        int n=4;
+        Panier p = new Panier(n);
         p.ajoutOrange(new Orange(0.50,"Chili"));
         p.ajoutOrange(new Orange(0.05,"Perou"));
         p.ajoutOrange(new Orange(0.80,"Soudan"));
         p.ajoutOrange(new Orange(0.50,"Suede"));
         p.ajoutOrange(new Orange(0.10,"Alaska"));
-        
+        assertEquals(n,p.getListProd().size(),0.0);
     }
     
     /**
      * Test of estVide method, of class Panier.
      */
     @Test
-    public void testEstVide() {
+    public void testEstVide() throws OrangeException {
         System.out.println("estVide");
         Panier instance = new Panier(1);
         boolean expResult = true;
