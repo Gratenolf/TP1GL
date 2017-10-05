@@ -5,6 +5,7 @@
  */
 package fr.ufrsciencestech.panier;
 import java.util.ArrayList;
+import java.util.Iterator;
 /**
  *
  * @author ah154489
@@ -15,12 +16,17 @@ public class Panier {
     
     public Panier(int cont){
         this.setContenance(cont);
+        listProd = new ArrayList();
     }
 
     public int getContenance() {
         return Contenance;
     }
 
+    /**
+     * pas utile mais fait quand meme
+     * @param Contenance 
+     */
     public void setContenance(int Contenance) {
         if(Contenance>0)
             this.Contenance = Contenance;
@@ -39,6 +45,37 @@ public class Panier {
             return true;
         return false;
     }
+    
+    public void boycotteOrange(String ori){
+        Iterator<Orange> it = listProd.iterator();
+        while(it.hasNext()){
+            Orange courante = it.next();
+            if(courante.getOrigine().equals(ori))
+                listProd.remove(courante);
+            else
+                System.out.println("Rien");
+        }
+    }
+    
+    public void ajoutOrange(Orange o) throws OrangeException
+    {
+        try
+        {
+            if(!estPlein())
+                listProd.add(o);
+            else
+            {
+                System.out.println("Panier plein");
+                throw new OrangeException("Panier plein");
+            }
+        
+        }
+        catch(NumberFormatException e)
+        {
+            throw new OrangeException("Mauvaise rentrée");
+        }
+    }
+    
     
     public String toString(){
         String s;

@@ -73,9 +73,9 @@ public class Orange {
         }
     }
     
-    public void equals()
+    public boolean equals(Orange c)
     {
-        
+        return (this.Prix==c.getPrix()&&this.Origine.equals(c.getOrigine()));
     }
    
     public String toString(){
