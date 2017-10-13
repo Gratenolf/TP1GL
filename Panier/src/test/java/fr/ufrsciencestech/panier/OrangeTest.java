@@ -41,7 +41,7 @@ public class OrangeTest {
      * Test of getPrix method, of class Orange.
      */
     @Test
-    public void testGetPrix() throws OrangeException {
+    public void testGetPrix() throws FruitException {
         System.out.println("getPrix");
         Orange instance = new Orange(0.5,"Paris");
         double expResult = 0.5;
@@ -53,13 +53,15 @@ public class OrangeTest {
      * Test of getOrigine method, of class Orange.
      */
     @Test
-    public void testGetOrigine() throws OrangeException {
+    public void testGetOrigine() throws FruitException {
         System.out.println("getOrigine");
         Orange instance = new Orange(0.5,"Paris");
         String expResult = "Paris";
         String result = instance.getOrigine();
         assertEquals(expResult, result);
     }
+    
+    
 
     /**
      * Test of setPrix method, of class Orange.
@@ -91,7 +93,7 @@ public class OrangeTest {
      * Test of equals method, of class Orange.
      */
     @Test
-    public void testEquals() throws OrangeException {
+    public void testEquals() throws FruitException {
         System.out.println("equals");
         Orange instance = new Orange(0.5,"Angola");
         Orange instanceB = new Orange(0.5,"Angola");
@@ -102,7 +104,7 @@ public class OrangeTest {
      * Test of toString method, of class Orange.
      */
     @Test
-    public void testToString() throws OrangeException {
+    public void testToString() throws FruitException {
         System.out.println("toString");
         Orange instance = new Orange(0.5,"Mozambique");
         String expResult = "Prix : 0.5 Origine : Mozambique";

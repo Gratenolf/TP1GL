@@ -41,7 +41,7 @@ public class PanierTest {
      * Test of getContenance method, of class Panier.
      */
     @Test
-    public void testGetContenance() throws OrangeException {
+    public void testGetContenance() throws FruitException {
         System.out.println("getContenance");
         Panier instance = new Panier(2);
         int expResult = 2;
@@ -54,7 +54,7 @@ public class PanierTest {
      * Test of estPlein method, of class Panier.
      */
     @Test
-    public void testEstPlein() throws OrangeException {
+    public void testEstPlein() throws FruitException {
         System.out.println("estPlein");
         Panier instance = new Panier(2);
         instance.ajoutOrange(new Orange(0.05,"ouzbekistan"));
@@ -84,7 +84,7 @@ public class PanierTest {
      * Test of estVide method, of class Panier.
      */
     @Test
-    public void testEstVide() throws OrangeException {
+    public void testEstVide() throws FruitException {
         System.out.println("estVide");
         Panier instance = new Panier(1);
         boolean expResult = true;
@@ -96,10 +96,10 @@ public class PanierTest {
      * Test of toString method, of class Panier.
      */
     @Test
-    public void testToString() throws OrangeException {
+    public void testToString() throws FruitException {
         System.out.println("toString");
         Panier instance = new Panier(12);
-        String expResult = "contenance du Panier:";
+        String expResult = "contenance du Panier:\nPanier vide.\n";
         String result = instance.toString();
         assertEquals(expResult, result);
     }

@@ -9,7 +9,7 @@ public class Panier {
     private int contenance;
     private ArrayList listProd;
     
-    public Panier(int cont) throws OrangeException{
+    public Panier(int cont) throws FruitException{
         try{
             System.out.println("try");
             if(cont>0){
@@ -19,11 +19,11 @@ public class Panier {
             }
             else{
                 System.out.println("erreur Contenance");
-                throw new OrangeException("Panier non valide");
+                throw new FruitException("Panier non valide");
             }
         }
         catch(NumberFormatException e){
-            throw new OrangeException("Panier non valide");
+            throw new FruitException("Panier non valide");
         }
     }
 
@@ -59,7 +59,7 @@ public class Panier {
         }
     }
     
-    public void ajoutOrange(Orange o) throws OrangeException
+    public void ajoutOrange(Orange o) throws FruitException
     {
         try
         {
@@ -68,25 +68,36 @@ public class Panier {
             else
             {
                 System.out.println("Panier plein");
-                throw new OrangeException("Panier plein");
+                throw new FruitException("Panier plein");
             }
         
         }
         catch(NumberFormatException e)
         {
-            throw new OrangeException("Mauvaise rentrée");
+            throw new FruitException("Mauvaise rentrée");
         }
+    }
+    
+    public int rechQt(String or){
+        int nb=0;
+        Iterator<Fruit> it = listProd.iterator();
+        while(it.hasNext()){
+            Fruit courante = it.next();
+            if(courante.getOrigine().equals(or)&&courante.getClass().equals(it.getClass()))
+                nb++;
+        }
+        return nb;
     }
     
     
     public String toString(){
         String s;
-        s="contenance du Panier:";
+        s="contenance du Panier:\n";
         if(!estVide())
             for(int i=0;i<listProd.size();i++)
                 s+=listProd.toString();
         else
-            s+="Panier vide.";
+            s+="Panier vide.\n";
         return s;
     }
 }

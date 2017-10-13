@@ -2,16 +2,11 @@ package fr.ufrsciencestech.panier;
 
 import java.util.IllegalFormatException;
 
-/**
- *
- * @author ah154489
- */
-public class Orange {
-    private double Prix;
-    private String Origine;
+public class Orange extends Fruit {
     
-    public Orange(double Prix,String Origine) throws OrangeException
+    public Orange(double Prix,String Origine) throws FruitException
     {
+        super(Origine,Prix);
         try
         {
             setPrix(Prix);
@@ -28,12 +23,7 @@ public class Orange {
         return this.Prix;
     }
     
-    public String getOrigine()
-    {
-        return this.Origine;
-    }
-    
-    public void setPrix(double P) throws OrangeException
+    public void setPrix(double P) throws FruitException
     {
         try
         {
@@ -42,38 +32,11 @@ public class Orange {
             else
             {
                 System.out.println("ErreurPrix");
-                throw new OrangeException("Mauvais prix");
+                throw new FruitException("Mauvais prix");
             }
         }
         catch(NumberFormatException e){
-            throw new OrangeException("Mauvaise rentrée");
+            throw new FruitException("Mauvaise rentrée");
         }
-    }
-     
-    public void setOrigine(String O) throws OrangeException
-    {
-        try{
-            if(!O.equals("")||!O.equals(null))
-                this.Origine=O;
-        
-            else
-            {
-                System.out.println("ErreurOrigine");
-                throw new OrangeException("Mauvaise Origine");
-            }
-        }
-        catch(IllegalFormatException e)
-        {
-            throw new OrangeException("Mauvaise rentrée");
-        }
-    }
-    
-    public boolean equals(Orange c)
-    {
-        return (this.Prix==c.getPrix()&&this.Origine.equals(c.getOrigine()));
-    }
-   
-    public String toString(){
-        return "Prix : "+Prix+" Origine : "+Origine;
     }
 }

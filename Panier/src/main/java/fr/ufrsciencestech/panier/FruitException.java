@@ -9,8 +9,8 @@ package fr.ufrsciencestech.panier;
  *
  * @author ah154489
  */
-public class OrangeException extends Exception{
-    public OrangeException(String message) {  
+public class FruitException extends Exception{
+    public FruitException(String message) {  
 		super(message); 
 	} 
 }
